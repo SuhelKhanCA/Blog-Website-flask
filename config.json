@@ -1,0 +1,8 @@
+{
+    "params":
+    {
+        "local_server": "True",
+        "local_uri": "sqlite:///contacts.db",
+        "prod_uri": "sqlite:///contacts.db"
+    }
+}
