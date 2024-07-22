@@ -6,11 +6,12 @@ local_server = True
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 app = Flask(__name__)
+
 if(local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
-    
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -60,6 +61,4 @@ def view_contacts():
     return render_template('contacts.html', contacts=all_contacts)
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
