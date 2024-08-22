@@ -3,6 +3,9 @@
     {
         "local_server": "True",
         "local_uri": "sqlite:///contacts.db",
-        "prod_uri": "sqlite:///contacts.db"
+        "prod_uri": "sqlite:///contacts.db",
+        "fb_url": "https://www.facebook.com/suhelkhanalig",
+        "twitter_url": "https://x.com/i/flow/login?redirect_after_login=%2Fsuhelkhanalig",
+        "github_url": "https://github.com/suhelKhanCA"
     }
 }
