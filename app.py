@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, Mail
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -6,6 +6,16 @@ local_server = True
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 app = Flask(__name__)
+
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=546,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME=params['gmail_username'],
+    MAIL_PASSWORD=params['gmail_password'],
+
+
+)
 
 if(local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
