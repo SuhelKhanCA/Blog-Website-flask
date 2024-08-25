@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=543,
+    MAIL_PORT=465,
     MAIL_USE_SSL=True,
     MAIL_USERNAME=params['gmail_username'],
     MAIL_PASSWORD=params['gmail_password'],
