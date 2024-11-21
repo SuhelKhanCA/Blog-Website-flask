@@ -7,7 +7,13 @@
         "fb_url": "https://www.facebook.com/suhelkhanalig",
         "twitter_url": "https://x.com/i/flow/login?redirect_after_login=%2Fsuhelkhanalig",
         "github_url": "https://github.com/suhelKhanCA",
+        "blog_name": "The Blogger",
         "gmail_username": "",
-        "gmail_password": ""
+        "gmail_password": "",
+        "about_text": "Hey there! I'm currently a student at Aligarh Muslim University, diving deep into the world of web development and DevOps. Throughout my journey, I've had the opportunity to work on several exciting projects and internships that have sharpened my skills. My focus in web development spans from frontend technologies like HTML, CSS, and JavaScript to backend frameworks such as Django, flask, PHP and Python. I love building applications that are both user-friendly and robust. In addition to coding, I'm passionate about DevOps practices. I enjoy optimizing development workflows using tools like Git, Docker, and Jenkins to ensure smooth deployment and continuous integration. I'm eager to bring my enthusiasm and skills to a team where I can contribute and grow further in the tech industry.",
+        "no_of_posts": "5",
+        "login_image": "login.png",
+        "admin_user": "suhel",
+        "admin_password": "subscribe"
     }
 }
