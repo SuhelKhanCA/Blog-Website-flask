@@ -5,6 +5,7 @@ A simple blog website built with Flask. This project includes features for displ
 **NOTE** : Planning to use this blog website as my upcoming tech blogs.
 
 ## Table of Contents
+
 - [Blog Website using Flask](#blog-website-using-flask)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
@@ -14,6 +15,13 @@ A simple blog website built with Flask. This project includes features for displ
   - [Usage](#usage)
   - [Project Structure](#project-structure)
   - [Routes](#routes)
+  - [Screenshots](#screenshots)
+    - [Home Page](#home-page)
+    - [About Page](#about-page)
+    - [Contact Page](#contact-page)
+    - [Post Page](#post-page)
+    - [Admin Dashboard](#admin-dashboard)
+    - [Contacts View](#contacts-view)
   - [Contributing](#contributing)
   - [License](#license)
   - [Acknowledgements](#acknowledgements)
@@ -36,10 +44,11 @@ A simple blog website built with Flask. This project includes features for displ
 ## Installation
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/SuhelKhanCA/Blog-Website-flask.git
    cd Blog-Website-flask
-    ```
+   ```
 
 2. **Install Dependencies**
 
@@ -52,6 +61,7 @@ pip install -r requirements.txt
 1. **Create the Configuration File**
 
 In the root directory, create a file named config.json with the following structure:
+
 ```json
 {
   "params": {
@@ -63,9 +73,9 @@ In the root directory, create a file named config.json with the following struct
 }
 ```
 
-***Replace the placeholder values with your actual Gmail credentials and database URIs.***
+**_Replace the placeholder values with your actual Gmail credentials and database URIs._**
 
-2.**Initialize the Database**
+2. **Initialize the Database**
 
 - Open a Python shell and execute:
 
@@ -78,11 +88,11 @@ db.create_all()
 
 ## Usage
 
-Home Page: Visit http://127.0.0.1:5000/ to view the homepage.
-About Page: Visit http://127.0.0.1:5000/about for information about the blog.
-Contact Page: Visit http://127.0.0.1:5000/contact to submit your contact details and message.
-Post Page: Visit http://127.0.0.1:5000/post to view a blog post.
-Contacts View: Visit http://127.0.0.1:5000/contacts to see all submitted contacts (typically for administrative purposes).
+- **Home Page**: Visit `http://127.0.0.1:5000/` to view the homepage.
+- **About Page**: Visit `http://127.0.0.1:5000/about` for information about the blog.
+- **Contact Page**: Visit `http://127.0.0.1:5000/contact` to submit your contact details and message.
+- **Post Page**: Visit `http://127.0.0.1:5000/post` to view a blog post.
+- **Contacts View**: Visit `http://127.0.0.1:5000/contacts` to see all submitted contacts (typically for administrative purposes).
 
 ## Project Structure
 
@@ -97,7 +107,9 @@ Blog-Website-flask/
 │   ├── about.html        # About page template
 │   ├── contact.html      # Contact page template
 │   ├── post.html         # Blog post template
-│   └── contacts.html     # Contacts listing template
+│   ├── dashboard.html    # Admin dashboard template
+│   ├── get_contacts.html # Contacts listing template
+│   └── login.html        # Login page template
 ├── .gitignore            # Specifies files to ignore in Git
 ├── app.py                # Main Flask application file
 ├── config.json           # Configuration file (create this file as shown above)
@@ -107,12 +119,49 @@ Blog-Website-flask/
 
 ## Routes
 
-- /: Home page (renders index.html)
-- /about: About page (renders about.html)
-- /contact: Contact page (handles GET and POST requests)
-On POST, it saves the submitted contact information into the database and sends an email notification.
-- /post: Displays a blog post (renders post.html)
-- /contacts: Lists all contact submissions (renders contacts.html)
+- `/`: Home page (renders `index.html`)
+- `/about`: About page (renders `about.html`)
+- `/contact`: Contact page (handles GET and POST requests)
+  - On POST, it saves the submitted contact information into the database and sends an email notification.
+- `/post/<string:post_slug>`: Displays a blog post (renders `post.html`)
+- `/dashboard`: Admin dashboard (renders `dashboard.html`)
+- `/create_post`: Create a new blog post (renders `create_post.html`)
+- `/edit/<string:sno>`: Edit an existing blog post (renders `edit.html`)
+- `/delete/<string:sno>`: Delete a blog post
+- `/get_contacts`: Lists all contact submissions (renders `get_contacts.html`)
+- `/uploader`: Handles image uploads
+- `/logout`: Logs out the user
+
+## Screenshots
+
+Here are some screenshots of the running website:
+
+### Home Page
+
+![Home Page](snapshot/home1.png)
+![Home Page](snapshot/home2.png)
+
+### About Page
+
+![About Page](snapshot/about1.png)
+![About Page](snapshot/about2.png)
+
+### Contact Page
+
+![Contact Page](snapshot/conatctme.png)
+![Contact Page](snapshot/conatctme2.png)
+
+### Post Page
+
+![Post Page](snapshot/posts.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](snapshot/dashboard.png)
+
+### Contacts View
+
+![Contacts View](snapshot/getcon.png)
 
 ## Contributing
 
