@@ -8,7 +8,12 @@ with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 
 local_server = True
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["UPLOAD_FOLDER"] = params['upload_location']
+
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
