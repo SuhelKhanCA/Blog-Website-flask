@@ -1,4 +1,5 @@
 from config import db
+from datetime import datetime
 
 class Contacts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
@@ -17,7 +18,7 @@ class Posts(db.Model):
     slug = db.Column(db.String(21), nullable=False)
     content = db.Column(db.String(120), nullable=False)
     tagline = db.Column(db.String(120), nullable=False)
-    date = db.Column(db.String(12), nullable=True)
+    date = db.Column(db.DateTime, nullable=True, default=datetime.now)
     img_file = db.Column(db.String(12), nullable=True)
 
     def __repr__(self):

@@ -20,7 +20,7 @@
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
       <!--Fetching posts from  db-->
-      {% for post in posts %}
+      {% for post in posts.items %}
       <div class="post-preview">
         <a href="/post/{{post.slug}}">
           <h2 class="post-title">{{ post.title }}</h2>
@@ -29,7 +29,8 @@
         <p class="post-meta">
           Posted by
           <a href="#">Admin</a>
-          on {{post.date}}
+          on {% if post.date is string %}{{post.date}} {% else
+          %}{{post.date.strftime('%Y-%m-%d')}}{% endif %}
         </p>
       </div>
 
@@ -39,12 +40,27 @@
       {% endfor %}
       <!-- Pager-->
       <div class="d-flex justify-content-between mb-4">
-        <a class="btn btn-primary text-uppercase float-left" href="#!"
+        {% if posts.has_prev %}
+        <a
+          class="btn btn-primary text-uppercase"
+          href="{{ url_for('home', page=posts.prev_num) }}"
           >← Newer Posts</a
         >
-        <a class="btn btn-primary text-uppercase float-right" href="#!"
+        {% else %}
+        <a class="btn btn-secondary text-uppercase disabled" href="#"
+          >← Newer Posts</a
+        >
+        {% endif %} {% if posts.has_next %}
+        <a
+          class="btn btn-primary text-uppercase"
+          href="{{ url_for('home', page=posts.next_num) }}"
           >Older Posts →</a
         >
+        {% else %}
+        <a class="btn btn-secondary text-uppercase disabled" href="#"
+          >Older Posts →</a
+        >
+        {% endif %}
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 from functools import wraps
+import math
 from flask import redirect, render_template, request, url_for, session, flash
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -34,14 +35,28 @@ def login_required(f):
     return decorated_function
 
 @app.route("/")
-def home():
+@app.route("/page/<int:page>")
+def home(page=1):
     """
     Home route for the blog website. Displays a list of blog posts with pagination.
+    
+    Args:
+        page (int): The current page number (default: 1)
 
     Returns:
         str: Rendered HTML template for the home page.
     """
-    posts = Posts.query.filter_by().all()[0:params['no_of_posts']]
+    per_page = params['no_of_posts']
+    posts = Posts.query.order_by(Posts.date.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    
+    # Ensure dates are datetime objects
+    for post in posts.items:
+        if isinstance(post.date, str):
+            try:
+                post.date = datetime.strptime(post.date, '%Y-%m-%d %H:%M:%S.%f')
+            except (ValueError, TypeError):
+                post.date = datetime.now()
+    
     return render_template('index.html', params=params, posts=posts)
 
 @app.route("/posts")
